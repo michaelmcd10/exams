@@ -51,6 +51,12 @@ function requestFullscreen() {
     if (elem.requestFullscreen) {
         elem.requestFullscreen().catch(err => {
             console.log('Fullscreen request failed:', err);
+            // Show user-friendly message
+            const message = document.createElement('div');
+            message.style.cssText = 'position: fixed; top: 10px; left: 50%; transform: translateX(-50%); background: #ff6b6b; color: white; padding: 10px 20px; border-radius: 5px; z-index: 10000;';
+            message.textContent = 'Unable to enter fullscreen mode. Please manually enter fullscreen for the best exam experience.';
+            document.body.appendChild(message);
+            setTimeout(() => message.remove(), 5000);
         });
     } else if (elem.mozRequestFullScreen) {
         elem.mozRequestFullScreen();
@@ -136,6 +142,13 @@ function updateQuestionNavigation() {
     });
 }
 
+// Escape HTML to prevent XSS
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
 // Load question
 function loadQuestion(index) {
     currentQuestion = index;
@@ -144,7 +157,7 @@ function loadQuestion(index) {
     document.getElementById('current-question-num').textContent = index + 1;
     
     const content = document.getElementById('question-content');
-    let html = `<div class="question-text">${question.question}</div>`;
+    let html = `<div class="question-text">${escapeHtml(question.question)}</div>`;
     
     if (question.type === 'multiple-choice') {
         html += '<div class="options">';
@@ -153,8 +166,8 @@ function loadQuestion(index) {
             const selectedClass = answers[index] === i ? 'selected' : '';
             html += `
                 <label class="option ${selectedClass}">
-                    <input type="radio" name="question-${index}" value="${i}" ${checked} onchange="saveAnswer(${index}, ${i})">
-                    <span>${option}</span>
+                    <input type="radio" name="question-${index}" value="${i}" ${checked} data-question-index="${index}" data-answer-index="${i}">
+                    <span>${escapeHtml(option)}</span>
                 </label>
             `;
         });
@@ -167,18 +180,45 @@ function loadQuestion(index) {
             const selectedClass = savedAnswers.includes(i) ? 'selected' : '';
             html += `
                 <label class="option ${selectedClass}">
-                    <input type="checkbox" name="question-${index}" value="${i}" ${checked} onchange="saveMultipleAnswer(${index}, ${i})">
-                    <span>${option}</span>
+                    <input type="checkbox" name="question-${index}" value="${i}" ${checked} data-question-index="${index}" data-answer-index="${i}">
+                    <span>${escapeHtml(option)}</span>
                 </label>
             `;
         });
         html += '</div>';
     } else if (question.type === 'text') {
         const savedText = answers[index] || '';
-        html += `<textarea class="text-answer" placeholder="Type your answer here..." onchange="saveTextAnswer(${index}, this.value)">${savedText}</textarea>`;
+        html += `<textarea class="text-answer" placeholder="Type your answer here..." data-question-index="${index}">${escapeHtml(savedText)}</textarea>`;
     }
     
     content.innerHTML = html;
+    
+    // Attach event listeners
+    if (question.type === 'multiple-choice') {
+        const radios = content.querySelectorAll('input[type="radio"]');
+        radios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                const qIndex = parseInt(this.dataset.questionIndex);
+                const aIndex = parseInt(this.dataset.answerIndex);
+                saveAnswer(qIndex, aIndex);
+            });
+        });
+    } else if (question.type === 'multiple-select') {
+        const checkboxes = content.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const qIndex = parseInt(this.dataset.questionIndex);
+                const aIndex = parseInt(this.dataset.answerIndex);
+                saveMultipleAnswer(qIndex, aIndex);
+            });
+        });
+    } else if (question.type === 'text') {
+        const textarea = content.querySelector('textarea');
+        textarea.addEventListener('input', function() {
+            const qIndex = parseInt(this.dataset.questionIndex);
+            saveTextAnswer(qIndex, this.value);
+        });
+    }
     
     // Update navigation buttons
     updateQuestionNavigation();
