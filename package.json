@@ -1,0 +1,23 @@
+{
+  "name": "exam-platform",
+  "version": "1.0.0",
+  "description": "A secure, distraction-free online examination platform",
+  "main": "index.html",
+  "scripts": {
+    "dev": "python -m http.server 8000",
+    "start": "python -m http.server 8000"
+  },
+  "keywords": [
+    "exam",
+    "education",
+    "testing",
+    "assessment",
+    "quiz"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/michaelmcd10/exams"
+  }
+}

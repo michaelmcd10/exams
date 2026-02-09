@@ -42,6 +42,45 @@ A secure, distraction-free online examination platform similar to exam.net.
 
 3. Navigate to `http://localhost:8000` in your browser
 
+### Deploying to Vercel
+
+This project is optimized for deployment on Vercel. Follow these steps:
+
+#### Option 1: Deploy via Vercel CLI
+
+1. Install Vercel CLI:
+   ```bash
+   npm install -g vercel
+   ```
+
+2. Deploy the project:
+   ```bash
+   cd exams
+   vercel
+   ```
+
+3. Follow the prompts to link to your Vercel account and deploy
+
+#### Option 2: Deploy via Vercel Dashboard
+
+1. Visit [Vercel Dashboard](https://vercel.com/new)
+2. Click "Import Project"
+3. Select your GitHub repository
+4. Configure:
+   - **Framework Preset**: Other (or None)
+   - **Root Directory**: ./
+   - **Build Command**: (leave empty)
+   - **Output Directory**: (leave empty)
+5. Click "Deploy"
+
+#### Option 3: Deploy via GitHub Integration
+
+1. Connect your GitHub repository to Vercel
+2. Push to the main branch
+3. Vercel will automatically deploy your changes
+
+The platform will be available at: `https://your-project-name.vercel.app`
+
 ### Usage
 
 1. **Start Screen**: Enter your name and student ID
