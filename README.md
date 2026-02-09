@@ -6,7 +6,24 @@ A secure, distraction-free online examination platform similar to exam.net.
 
 ## 🚀 Quick Deploy
 
-**Ready to deploy?** Click the button above or see [DEPLOY-NOW.md](./DEPLOY-NOW.md) for step-by-step instructions.
+**Ready to deploy?** 
+
+- **Fastest:** Click the Vercel button above
+- **More options:** See [DEPLOYMENT-METHODS.md](./DEPLOYMENT-METHODS.md) for 10+ deployment platforms
+- **Step-by-step:** See [DEPLOY-NOW.md](./DEPLOY-NOW.md) for detailed Vercel guide
+
+### Deployment Options
+
+This is a static site with **zero build requirements**. Deploy to:
+- ☁️ **Vercel** - One-click deploy (recommended)
+- 🌐 **Netlify** - Git integration
+- 📦 **GitHub Pages** - Free with GitHub
+- ⚡ **Cloudflare Pages** - Ultra-fast CDN
+- 🔥 **Firebase** - Google Cloud
+- 🌊 **AWS S3** - Enterprise scale
+- 💻 **Self-hosted** - Full control
+
+**See [DEPLOYMENT-METHODS.md](./DEPLOYMENT-METHODS.md) for complete platform comparison and instructions.**
 
 ## Features
 
