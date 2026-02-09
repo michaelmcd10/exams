@@ -1,12 +1,6 @@
 {
   "version": 2,
   "public": true,
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/$1"
-    }
-  ],
   "headers": [
     {
       "source": "/(.*)",
@@ -17,7 +11,7 @@
         },
         {
           "key": "X-Frame-Options",
-          "value": "DENY"
+          "value": "SAMEORIGIN"
         },
         {
           "key": "X-XSS-Protection",
@@ -30,7 +24,7 @@
       ]
     },
     {
-      "source": "/(.*)\\.(js|css|html)",
+      "source": "/(.*)\\.(js|css)",
       "headers": [
         {
           "key": "Cache-Control",
