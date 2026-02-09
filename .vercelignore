@@ -1,9 +1,5 @@
 # Git files
 .git
-.gitignore
-
-# Documentation
-README.md
 
 # IDE files
 .vscode
