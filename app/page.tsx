@@ -43,10 +43,16 @@ export default function Home() {
               With modern technology and intuitive design, managing and taking exams has never been easier.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-              <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg transition-colors">
+              <button 
+                aria-label="Get started with the exam platform"
+                className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg transition-colors"
+              >
                 Get Started
               </button>
-              <button className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-3 px-8 rounded-lg transition-colors">
+              <button 
+                aria-label="Learn more about the exam platform"
+                className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-3 px-8 rounded-lg transition-colors"
+              >
                 Learn More
               </button>
             </div>
