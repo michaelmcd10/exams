@@ -120,7 +120,7 @@ function initializeQuestionNavigation() {
         const btn = document.createElement('button');
         btn.className = 'question-btn';
         btn.textContent = index + 1;
-        btn.onclick = () => loadQuestion(index);
+        btn.addEventListener('click', () => loadQuestion(index));
         container.appendChild(btn);
     });
     
@@ -400,4 +400,11 @@ document.addEventListener('fullscreenchange', () => {
 // Initialize on page load
 window.addEventListener('DOMContentLoaded', () => {
     initializeExam();
+    
+    // Attach event listeners to buttons
+    document.getElementById('start-exam-btn').addEventListener('click', startExam);
+    document.getElementById('submit-exam-btn').addEventListener('click', submitExam);
+    document.getElementById('prev-btn').addEventListener('click', previousQuestion);
+    document.getElementById('next-btn').addEventListener('click', nextQuestion);
+    document.getElementById('reset-exam-btn').addEventListener('click', resetExam);
 });
