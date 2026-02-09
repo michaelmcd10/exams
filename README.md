@@ -2,6 +2,12 @@
 
 A secure, distraction-free online examination platform similar to exam.net.
 
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/michaelmcd10/exams)
+
+## 🚀 Quick Deploy
+
+**Ready to deploy?** Click the button above or see [DEPLOY-NOW.md](./DEPLOY-NOW.md) for step-by-step instructions.
+
 ## Features
 
 - **Clean Interface**: Distraction-free exam environment for focused test-taking
