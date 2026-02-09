@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Platform</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Start Screen -->
+    <div id="start-screen" class="screen active">
+        <div class="container">
+            <h1>🎓 Exam Platform</h1>
+            <p class="subtitle">A secure, distraction-free examination environment</p>
+            
+            <div class="exam-info">
+                <h2>Exam Instructions</h2>
+                <ul>
+                    <li>This exam contains <strong id="total-questions">10</strong> questions</li>
+                    <li>Time limit: <strong id="time-limit">30</strong> minutes</li>
+                    <li>You can navigate between questions freely</li>
+                    <li>Your answers are automatically saved</li>
+                    <li>Click "Submit Exam" when you're done</li>
+                    <li>The exam will enter fullscreen mode for focus</li>
+                </ul>
+            </div>
+            
+            <div class="student-info">
+                <input type="text" id="student-name" placeholder="Enter your name" required>
+                <input type="text" id="student-id" placeholder="Enter your student ID" required>
+            </div>
+            
+            <button class="btn btn-primary" onclick="startExam()">Start Exam</button>
+        </div>
+    </div>
+
+    <!-- Exam Screen -->
+    <div id="exam-screen" class="screen">
+        <!-- Header -->
+        <header class="exam-header">
+            <div class="header-left">
+                <h2>Exam in Progress</h2>
+                <span id="student-info-display"></span>
+            </div>
+            <div class="header-center">
+                <div class="timer" id="timer">
+                    <span class="timer-icon">⏱️</span>
+                    <span id="time-remaining">30:00</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <button class="btn btn-secondary" onclick="submitExam()">Submit Exam</button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="exam-content">
+            <!-- Question Navigation Sidebar -->
+            <aside class="question-nav">
+                <h3>Questions</h3>
+                <div id="question-buttons" class="question-buttons"></div>
+                <div class="legend">
+                    <div class="legend-item">
+                        <span class="legend-box answered"></span>
+                        <span>Answered</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-box current"></span>
+                        <span>Current</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-box unanswered"></span>
+                        <span>Unanswered</span>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Question Display -->
+            <main class="question-display">
+                <div class="question-header">
+                    <h3>Question <span id="current-question-num">1</span> of <span id="total-questions-display">10</span></h3>
+                </div>
+                
+                <div class="question-content" id="question-content">
+                    <!-- Question will be loaded here -->
+                </div>
+
+                <div class="question-actions">
+                    <button class="btn btn-secondary" onclick="previousQuestion()" id="prev-btn">
+                        ← Previous
+                    </button>
+                    <button class="btn btn-primary" onclick="nextQuestion()" id="next-btn">
+                        Next →
+                    </button>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Results Screen -->
+    <div id="results-screen" class="screen">
+        <div class="container">
+            <h1>✅ Exam Submitted</h1>
+            <div class="results-content">
+                <p class="success-message">Your exam has been successfully submitted!</p>
+                
+                <div class="results-summary">
+                    <h2>Submission Summary</h2>
+                    <div class="result-item">
+                        <span>Name:</span>
+                        <strong id="result-name"></strong>
+                    </div>
+                    <div class="result-item">
+                        <span>Student ID:</span>
+                        <strong id="result-id"></strong>
+                    </div>
+                    <div class="result-item">
+                        <span>Questions Answered:</span>
+                        <strong id="result-answered"></strong>
+                    </div>
+                    <div class="result-item">
+                        <span>Time Taken:</span>
+                        <strong id="result-time"></strong>
+                    </div>
+                    <div class="result-item">
+                        <span>Submission Time:</span>
+                        <strong id="result-submission-time"></strong>
+                    </div>
+                </div>
+
+                <button class="btn btn-secondary" onclick="resetExam()">Start New Exam</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="exam-data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

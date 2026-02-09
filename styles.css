@@ -1,0 +1,485 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: #f5f5f5;
+}
+
+/* Screen Management */
+.screen {
+    display: none;
+    min-height: 100vh;
+}
+
+.screen.active {
+    display: block;
+}
+
+/* Container */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* Start Screen */
+#start-screen {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+#start-screen .container {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+    padding: 50px;
+}
+
+#start-screen h1 {
+    color: #667eea;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 1.1em;
+}
+
+.exam-info {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.exam-info h2 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 1.3em;
+}
+
+.exam-info ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.exam-info li {
+    padding: 8px 0;
+    padding-left: 25px;
+    position: relative;
+}
+
+.exam-info li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #667eea;
+    font-weight: bold;
+}
+
+.student-info {
+    margin-bottom: 30px;
+}
+
+.student-info input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 1em;
+    transition: border-color 0.3s;
+}
+
+.student-info input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+/* Buttons */
+.btn {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 600;
+}
+
+.btn-primary {
+    background: #667eea;
+    color: white;
+    width: 100%;
+}
+
+.btn-primary:hover {
+    background: #5568d3;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #5a6268;
+}
+
+/* Exam Screen */
+#exam-screen {
+    background: #fff;
+}
+
+.exam-header {
+    background: #667eea;
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-left h2 {
+    font-size: 1.3em;
+    margin-bottom: 5px;
+}
+
+.header-left span {
+    font-size: 0.9em;
+    opacity: 0.9;
+}
+
+.timer {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.timer.warning {
+    background: #ff6b6b;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* Exam Content */
+.exam-content {
+    display: flex;
+    min-height: calc(100vh - 80px);
+}
+
+/* Question Navigation */
+.question-nav {
+    width: 250px;
+    background: #f8f9fa;
+    padding: 20px;
+    border-right: 1px solid #ddd;
+    overflow-y: auto;
+}
+
+.question-nav h3 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.question-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.question-btn {
+    padding: 10px;
+    border: 2px solid #ddd;
+    background: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.question-btn:hover {
+    transform: scale(1.05);
+}
+
+.question-btn.current {
+    background: #667eea;
+    color: white;
+    border-color: #667eea;
+}
+
+.question-btn.answered {
+    background: #51cf66;
+    color: white;
+    border-color: #51cf66;
+}
+
+.legend {
+    border-top: 1px solid #ddd;
+    padding-top: 15px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 0.9em;
+}
+
+.legend-box {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    margin-right: 10px;
+    border: 2px solid #ddd;
+}
+
+.legend-box.answered {
+    background: #51cf66;
+    border-color: #51cf66;
+}
+
+.legend-box.current {
+    background: #667eea;
+    border-color: #667eea;
+}
+
+.legend-box.unanswered {
+    background: white;
+}
+
+/* Question Display */
+.question-display {
+    flex: 1;
+    padding: 40px;
+    overflow-y: auto;
+}
+
+.question-header {
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #eee;
+}
+
+.question-header h3 {
+    color: #667eea;
+    font-size: 1.3em;
+}
+
+.question-content {
+    margin-bottom: 40px;
+    min-height: 300px;
+}
+
+.question-text {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    line-height: 1.8;
+    color: #333;
+}
+
+.options {
+    list-style: none;
+}
+
+.option {
+    background: #f8f9fa;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+}
+
+.option:hover {
+    background: #e9ecef;
+    border-color: #667eea;
+}
+
+.option input[type="radio"],
+.option input[type="checkbox"] {
+    margin-right: 15px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.option.selected {
+    background: #e7f5ff;
+    border-color: #667eea;
+}
+
+.text-answer {
+    width: 100%;
+    min-height: 150px;
+    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1em;
+    font-family: inherit;
+    resize: vertical;
+    transition: border-color 0.3s;
+}
+
+.text-answer:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+/* Question Actions */
+.question-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid #eee;
+}
+
+.question-actions .btn {
+    flex: 1;
+    max-width: 200px;
+}
+
+/* Results Screen */
+#results-screen {
+    background: linear-gradient(135deg, #51cf66 0%, #37b24d 100%);
+}
+
+#results-screen .container {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+    padding: 50px;
+}
+
+#results-screen h1 {
+    color: #51cf66;
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.success-message {
+    text-align: center;
+    font-size: 1.2em;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.results-summary {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+.results-summary h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 1.3em;
+}
+
+.result-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.result-item:last-child {
+    border-bottom: none;
+}
+
+.result-item span {
+    color: #666;
+}
+
+.result-item strong {
+    color: #333;
+}
+
+#results-screen .btn {
+    width: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .exam-header {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px;
+    }
+
+    .exam-content {
+        flex-direction: column;
+    }
+
+    .question-nav {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .question-buttons {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .question-display {
+        padding: 20px;
+    }
+
+    .question-actions {
+        flex-direction: column;
+    }
+
+    .question-actions .btn {
+        max-width: 100%;
+    }
+}
+
+/* Fullscreen Mode */
+body.fullscreen {
+    overflow: hidden;
+}
+
+body.fullscreen #exam-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 9999;
+}
