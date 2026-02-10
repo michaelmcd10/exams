@@ -2,6 +2,8 @@
 
 Make examination seamless
 
+> **📌 Important:** If you're seeing a 404 error on Vercel, see [FIXING_404.md](./FIXING_404.md) for the solution. The application code needs to be merged to the `main` branch for Vercel to deploy it.
+
 ![Exams Platform](https://github.com/user-attachments/assets/da66681e-02f5-4bec-9fda-8a48da3d2b67)
 
 ## Features
